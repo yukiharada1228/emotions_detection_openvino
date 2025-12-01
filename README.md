@@ -1,14 +1,23 @@
-# Face Detection
+# Emotions Detection
 
-A real-time face detection application using OpenVINO.
+A real-time face detection and emotion recognition application using OpenVINO.
 
 ## Features
 
 - Real-time face detection
+- Real-time emotion recognition (detects 5 types of emotions)
 - Configurable number of faces to detect (default: 1)
-- Adjustable confidence threshold (default: 0.8)
+- Adjustable confidence threshold for emotion recognition (default: 0.2)
 - Detects faces starting from the nearest one
 - Camera port configurable via environment variables
+
+## Detectable Emotions
+
+- **Neutral** (Gray): Neutral
+- **Happy** (Yellow): Happy
+- **Sad** (Blue): Sad
+- **Surprise** (Green): Surprise
+- **Anger** (Red): Anger
 
 ## Requirements
 
@@ -21,8 +30,8 @@ A real-time face detection application using OpenVINO.
 ### Using uv (Recommended)
 
 ```bash
-git clone https://github.com/yukiharada1228/face_detection.git
-cd face_detection
+git clone https://github.com/yukiharada1228/emotions_detection_openvino.git
+cd emotions_detection_openvino
 uv sync
 ```
 
@@ -57,16 +66,16 @@ python main.py
 ### Options
 
 ```bash
-# Specify the number of faces to detect (confidence uses default 0.8)
+# Specify the number of faces to detect (confidence uses default 0.2)
 uv run main.py [number_of_faces]
 
 # Specify both number of faces and confidence threshold
 uv run main.py [number_of_faces] [confidence]
 
 # Examples
-uv run main.py          # Default (1 face, confidence 0.8)
-uv run main.py 2        # Detect 2 faces (confidence 0.8)
-uv run main.py 1 0.9    # Detect 1 face (confidence 0.9)
+uv run main.py          # Default (1 face, confidence 0.2)
+uv run main.py 2        # Detect 2 faces (confidence 0.2)
+uv run main.py 1 0.5    # Detect 1 face (confidence 0.5)
 ```
 
 ### Controls
@@ -76,14 +85,18 @@ uv run main.py 1 0.9    # Detect 1 face (confidence 0.9)
 ## Project Structure
 
 ```
-face_detection/
-├── face_detection/
+emotions_detection_openvino/
+├── emotions_detection/
 │   ├── __init__.py
-│   ├── config.py          # Configuration file (model path, camera port, etc.)
-│   └── face_detect.py     # Main face detection logic
-├── main.py                 # Entry point
-├── pyproject.toml          # Project settings and dependencies
-├── .env.example            # Environment variables template
+│   ├── config.py              # Configuration file (model path, camera port, etc.)
+│   └── emotions_detection.py  # Main emotion recognition logic
+├── face_detection_openvino/   # Face detection submodule
+│   └── face_detection/
+│       ├── config.py
+│       └── face_detect.py
+├── main.py                     # Entry point
+├── pyproject.toml              # Project settings and dependencies
+├── .env.example                # Environment variables template
 └── README.md
 ```
 
@@ -93,9 +106,12 @@ face_detection/
 - **OpenCV**: Image processing and camera capture
 - **python-dotenv**: Environment variable management
 
-## Model
+## Models
 
-This project uses the `face-detection-retail-0005` model. It will be automatically downloaded on first run.
+This project uses the following models:
+
+- **Face Detection**: `face-detection-retail-0005` - Automatically downloaded on first run
+- **Emotion Recognition**: `emotions-recognition-retail-0003` - Automatically downloaded on first run
 
 ## License
 
