@@ -58,9 +58,6 @@ If the `.env` file does not exist, camera port 0 will be used by default.
 ```bash
 # Using uv
 uv run main.py
-
-# Or run directly
-python main.py
 ```
 
 ### Options
