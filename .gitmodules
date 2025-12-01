@@ -1,0 +1,3 @@
+[submodule "face_detection_openvino"]
+	path = face_detection_openvino
+	url = git@github.com:yukiharada1228/face_detection_openvino.git
