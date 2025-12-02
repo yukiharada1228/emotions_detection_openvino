@@ -23,7 +23,7 @@ elif len(sys.argv) == 2:
 else:
     num, conf = 1, 0.2
 logger.debug({"num": num, "conf": conf})
-capture = cv.VideoCapture(face_detection_openvino.face_detection.config.CAMERA_PORT)
+capture = cv.VideoCapture(emotions_detection.config.CAMERA_PORT)
 face_detect = face_detection_openvino.face_detection.config.face_detect
 emotions_recognition = emotions_detection.config.emotions_recognition
 try:
